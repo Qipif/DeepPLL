@@ -42,7 +42,7 @@ void MX_COMP1_Init(void)
   hcomp1.Init.InvertingInput = COMP_INPUT_MINUS_VREFINT;
   hcomp1.Init.NonInvertingInput = COMP_INPUT_PLUS_IO1;
   hcomp1.Init.OutputPol = COMP_OUTPUTPOL_NONINVERTED;
-  hcomp1.Init.Hysteresis = COMP_HYSTERESIS_LOW;
+  hcomp1.Init.Hysteresis = COMP_HYSTERESIS_HIGH;
   hcomp1.Init.BlankingSrce = COMP_BLANKINGSRC_NONE;
   hcomp1.Init.Mode = COMP_POWERMODE_HIGHSPEED;
   hcomp1.Init.WindowMode = COMP_WINDOWMODE_DISABLE;
@@ -71,7 +71,7 @@ void MX_COMP2_Init(void)
   hcomp2.Init.InvertingInput = COMP_INPUT_MINUS_VREFINT;
   hcomp2.Init.NonInvertingInput = COMP_INPUT_PLUS_IO2;
   hcomp2.Init.OutputPol = COMP_OUTPUTPOL_NONINVERTED;
-  hcomp2.Init.Hysteresis = COMP_HYSTERESIS_LOW;
+  hcomp2.Init.Hysteresis = COMP_HYSTERESIS_HIGH;
   hcomp2.Init.BlankingSrce = COMP_BLANKINGSRC_NONE;
   hcomp2.Init.Mode = COMP_POWERMODE_HIGHSPEED;
   hcomp2.Init.WindowMode = COMP_WINDOWMODE_DISABLE;

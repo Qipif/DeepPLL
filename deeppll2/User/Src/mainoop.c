@@ -7,13 +7,13 @@
 AD9833_Handler ad9833;
 
 #define TARGET_FREQ   10000000  //10000.00Hz(单位0.001Hz)
-#define FREQ_LIMIT    1000     //±1Hz边界
+#define FREQ_LIMIT    2000     //±1Hz边界
 
 //PI参数
 #define P_DEN         200
-#define INTEG_SHIFT   8
+#define INTEG_SHIFT   10
 #define I_DEN         50
-#define LP_SHIFT      4
+#define LP_SHIFT      5
 
 volatile static int32_t g_freq = TARGET_FREQ;
 static volatile int32_t g_err_filt = 0;
@@ -46,7 +46,7 @@ void main_init(void)
 	AD9833_Init(&ad9833, wave_sine, (uint32_t)((float)TARGET_FREQ / 1000.0f + 0.5f), 0, &hspi1, GPIOA, GPIO_PIN_4);
 
 	snprintf(buf, 21, "%ld.%02lu Hz   ", g_freq / 1000, g_freq % 1000);
-	OLED_ShowString(2, 1, buf);
+	OLED_ShowString(1, 1, buf);
 }
 
 void main_loop(void)
@@ -65,11 +65,13 @@ void main_loop(void)
 	if (now - last_tick >= 500)
 	{
 		last_tick = now;
-		snprintf(buf, 21, "%ld.%02lu Hz   ", g_freq / 1000, g_freq % 1000);
+		snprintf(buf, 21, "%ld.%02lu Hz  ", g_freq / 1000, g_freq % 1000);
+		OLED_ShowString(1, 1, buf);
+		snprintf(buf, 21, "d=%+6ld ", g_delta_dbg);
 		OLED_ShowString(2, 1, buf);
-		snprintf(buf, 21, "d=%+6ld C2=%5lu", g_delta_dbg, g_c2_cnt);
+		snprintf(buf, 21, "I=%+6ld ", g_integral);
 		OLED_ShowString(3, 1, buf);
-		snprintf(buf, 21, "I=%+6ld       ", g_integral);
+		snprintf(buf, 21, "C2=%5lu", g_c2_cnt);
 		OLED_ShowString(4, 1, buf);
 	}
 }
@@ -82,8 +84,8 @@ static void pll_pi(int32_t err)
 	g_integral += g_err_filt >> INTEG_SHIFT;
 
 	g_freq = TARGET_FREQ
-		   - g_err_filt / P_DEN
-		   - g_integral / I_DEN;
+		   + g_err_filt / P_DEN
+		   + g_integral / I_DEN;
 
 	if (g_freq > TARGET_FREQ + FREQ_LIMIT)
 		g_freq = TARGET_FREQ + FREQ_LIMIT;

@@ -2,10 +2,10 @@
 CAD.formats=
 CAD.pinconfig=
 CAD.provider=
-COMP1.Hysteresis=COMP_HYSTERESIS_LOW
+COMP1.Hysteresis=COMP_HYSTERESIS_HIGH
 COMP1.IPParameters=TriggerMode,Hysteresis
 COMP1.TriggerMode=COMP_TRIGGERMODE_IT_RISING
-COMP2.Hysteresis=COMP_HYSTERESIS_LOW
+COMP2.Hysteresis=COMP_HYSTERESIS_HIGH
 COMP2.IPParameters=Hysteresis,TriggerMode
 COMP2.TriggerMode=COMP_TRIGGERMODE_IT_RISING
 CORTEX_M7.IPParameters=default_mode_Activation
