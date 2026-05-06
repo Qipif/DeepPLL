@@ -7,18 +7,22 @@
 AD9833_Handler ad9833;
 
 #define TARGET_FREQ   10000000  //10000.00Hz(单位0.001Hz)
-#define FREQ_LIMIT    2000     //±1Hz边界
+#define FREQ_LIMIT    2000     //±2Hz边界
 
 //PI参数
-#define P_DEN         200
-#define INTEG_SHIFT   10
-#define I_DEN         50
-#define LP_SHIFT      5
+#define P_DEN         20       // TICK→mHz:  1°(111tick) ~ 5.5mHz
+#define INTEG_SHIFT   8        // 每周期累加: g_err_filt/256
+#define I_DEN         100      // 积分→mHz:  g_integral/100
+#define LP_SHIFT      7        // 低通时间常数 ~16个采样周期
+#define INTEG_LIMIT   100000   // 积分抗饱和限幅
+#define APPLY_DECIM   16        // 每8周期更新一次g_freq（减少DDS写入频率）
+
 
 volatile static int32_t g_freq = TARGET_FREQ;
 static volatile int32_t g_err_filt = 0;
 static volatile int32_t g_integral = 0;
 static volatile int32_t g_delta_dbg = 0;  //debug：原始相位差
+static uint8_t g_apply_cnt = 0;
 
 //TDC时间戳
 static volatile uint32_t g_t_dds = 0;
@@ -43,7 +47,7 @@ void main_init(void)
 	HAL_COMP_Start(&hcomp1);
 	HAL_COMP_Start(&hcomp2);
 
-	AD9833_Init(&ad9833, wave_sine, (uint32_t)((float)TARGET_FREQ / 1000.0f + 0.5f), 0, &hspi1, GPIOA, GPIO_PIN_4);
+	AD9833_Init(&ad9833, wave_sine, (uint32_t)((float)TARGET_FREQ / 1000.0f + 0.5f), 0, &hspi2, GPIOC, GPIO_PIN_0);
 
 	snprintf(buf, 21, "%ld.%02lu Hz   ", g_freq / 1000, g_freq % 1000);
 	OLED_ShowString(1, 1, buf);
@@ -55,7 +59,8 @@ void main_loop(void)
 	static int32_t last_freq = 0;
 	char buf[21];
 
-	if (g_freq != last_freq)
+	int32_t diff = g_freq - last_freq;
+	if (diff > 100 || diff < -100)    // 变化超过100 mHz才写入（AD9833步进~93mHz）
 	{
 		AD9833_SetFrequency(&ad9833, g_freq / 1000.0f);
 		last_freq = g_freq;
@@ -76,16 +81,22 @@ void main_loop(void)
 	}
 }
 
-// PI控制器
-static void pll_pi(int32_t err)
+static void pll_update(int32_t err)
 {
 	g_err_filt += (err - g_err_filt) >> LP_SHIFT;
-
 	g_integral += g_err_filt >> INTEG_SHIFT;
 
+	if (g_integral > INTEG_LIMIT)
+		g_integral = INTEG_LIMIT;
+	if (g_integral < -INTEG_LIMIT)
+		g_integral = -INTEG_LIMIT;
+}
+
+static void pll_apply(void)
+{
 	g_freq = TARGET_FREQ
-		   + g_err_filt / P_DEN
-		   + g_integral / I_DEN;
+		   - g_err_filt / P_DEN
+		   - g_integral / I_DEN;
 
 	if (g_freq > TARGET_FREQ + FREQ_LIMIT)
 		g_freq = TARGET_FREQ + FREQ_LIMIT;
@@ -101,14 +112,27 @@ void HAL_COMP_TriggerCallback(COMP_HandleTypeDef *hcomp)
 
 		if (g_t_dds != 0 && g_t_ref_prev != 0)
 		{
-			uint32_t period = t_ref - g_t_ref_prev;      // 周期 = 这一个上升沿 - 上一个上升沿
-			int32_t delta = (int32_t)(t_ref - g_t_dds);  // 差距
+			uint32_t period = t_ref - g_t_ref_prev;
 
-			if (delta > (int32_t)(period >> 1)) // 如果差距大于半个周期，就减掉一个周期（以区分超前滞后的多少）
+			if (period > 200000 || period < 1000)
+			{
+				g_t_ref_prev = t_ref;
+				return;
+			}
+
+			int32_t delta = (int32_t)(t_ref - g_t_dds);
+			if (delta > (int32_t)(period >> 1))
 				delta -= (int32_t)period;
 
 			g_delta_dbg = delta;
-			pll_pi(delta);
+			pll_update(delta);
+
+			g_apply_cnt++;
+			if (g_apply_cnt >= APPLY_DECIM)
+			{
+				g_apply_cnt = 0;
+				pll_apply();
+			}
 		}
 		g_t_ref_prev = t_ref;
 	}

@@ -1,0 +1,7 @@
+../User/Src/mainoop.c:19:13:design_hpf	5
+../User/Src/mainoop.c:34:13:process_block	5
+../User/Src/mainoop.c:47:6:TIM_Set_Frequency	1
+../User/Src/mainoop.c:56:6:main_init	1
+../User/Src/mainoop.c:70:6:main_loop	1
+../User/Src/mainoop.c:72:6:HAL_ADC_ConvHalfCpltCallback	4
+../User/Src/mainoop.c:79:6:HAL_ADC_ConvCpltCallback	4

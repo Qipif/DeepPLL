@@ -98,7 +98,7 @@ int main(void)
   MX_TIM1_Init();
   MX_COMP2_Init();
   MX_COMP1_Init();
-  MX_SPI1_Init();
+  MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
   main_init();
   /* USER CODE END 2 */

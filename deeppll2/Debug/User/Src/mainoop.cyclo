@@ -1,5 +1,6 @@
-../User/Src/mainoop.c:28:13:tdc_init	1
-../User/Src/mainoop.c:34:6:main_init	1
-../User/Src/mainoop.c:52:6:main_loop	3
-../User/Src/mainoop.c:80:13:pll_pi	3
-../User/Src/mainoop.c:96:6:HAL_COMP_TriggerCallback	6
+../User/Src/mainoop.c:32:13:tdc_init	1
+../User/Src/mainoop.c:38:6:main_init	1
+../User/Src/mainoop.c:56:6:main_loop	4
+../User/Src/mainoop.c:84:13:pll_update	3
+../User/Src/mainoop.c:95:13:pll_apply	3
+../User/Src/mainoop.c:107:6:HAL_COMP_TriggerCallback	9
