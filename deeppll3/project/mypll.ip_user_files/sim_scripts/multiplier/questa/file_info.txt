@@ -1,0 +1,3 @@
+xbip_utils_v3_0_vh_rfs.vhd,vhdl,xbip_utils_v3_0_15,../../../ipstatic/hdl/xbip_utils_v3_0_vh_rfs.vhd,incdir="D:/AMDDesignTools/2025.2/Vivado/data/rsb/busdef"
+mult_gen_v12_0_vh_rfs.vhd,vhdl,mult_gen_v12_0_24,../../../ipstatic/hdl/mult_gen_v12_0_vh_rfs.vhd,incdir="D:/AMDDesignTools/2025.2/Vivado/data/rsb/busdef"
+multiplier.vhd,vhdl,xil_defaultlib,../../../../mypll.gen/sources_1/ip/multiplier/sim/multiplier.vhd,incdir="D:/AMDDesignTools/2025.2/Vivado/data/rsb/busdef"

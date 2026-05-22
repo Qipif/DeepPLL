@@ -1,0 +1,88 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
+| Date         : Thu May 21 16:48:01 2026
+| Host         : LAPTOP-V5P4DNLK running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file dpll_control_sets_placed.rpt
+| Design       : dpll
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    10 |
+|    Minimum number of control sets                        |    10 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    30 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    10 |
+| >= 0 to < 4        |     3 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     4 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     1 |
+| >= 16              |     1 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              23 |           12 |
+| No           | No                    | Yes                    |               1 |            1 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |              16 |            5 |
+| Yes          | No                    | Yes                    |               8 |            2 |
+| Yes          | Yes                   | No                     |              26 |            8 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------------------------+---------------------------+---------------------------------------------+------------------+----------------+--------------+
+|           Clock Signal           |       Enable Signal       |               Set/Reset Signal              | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------------------------+---------------------------+---------------------------------------------+------------------+----------------+--------------+
+|  inst_ph_cmp/Lock_i_2_n_0        |                           |                                             |                1 |              1 |         1.00 |
+|  inst_ph_cmp/InputSignalDownEdge |                           | inst_ph_cmp/flag_i_2_n_0                    |                1 |              1 |         1.00 |
+|  inst_freqdiv/overflow           |                           |                                             |                1 |              1 |         1.00 |
+|  MainClock_IBUF_BUFG             | inst_zrwf/inst_M_F/E[0]   | inst_zrwf/clear                             |                1 |              4 |         4.00 |
+|  inst_ph_cmp/InputSignalDownEdge | Rst_n_IBUF                |                                             |                1 |              8 |         8.00 |
+|  MainClock_IBUF_BUFG             | inst_ph_cmp/E[0]          |                                             |                4 |              8 |         2.00 |
+|  MainClock_IBUF_BUFG             | inst_ph_cmp/Lead_reg_0[0] | inst_zrwf/inst_M_F/FilterCounter[7]_i_1_n_0 |                3 |              8 |         2.67 |
+|  MainClock_IBUF_BUFG             | inst_ph_cmp/cnt[0]        | inst_ph_cmp/flag_i_2_n_0                    |                2 |              8 |         4.00 |
+|  MainClock_IBUF_BUFG             | inst_zrwf/Negative_reg_1  | inst_freqdiv/DividerCounter[14]             |                4 |             14 |         3.50 |
+|  MainClock_IBUF_BUFG             |                           |                                             |               10 |             21 |         2.10 |
++----------------------------------+---------------------------+---------------------------------------------+------------------+----------------+--------------+
+
+

@@ -1,0 +1,1 @@
+multiplier.vhd,vhdl,xil_defaultlib,../../../../mypll.gen/sources_1/ip/multiplier/sim/multiplier.vhd,incdir="D:/AMDDesignTools/2025.2/Vivado/data/rsb/busdef"

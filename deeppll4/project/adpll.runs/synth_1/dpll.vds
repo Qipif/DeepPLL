@@ -1,0 +1,278 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Thu May 21 16:44:17 2026
+# Process ID         : 12252
+# Current directory  : C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/project/adpll.runs/synth_1
+# Command line       : vivado.exe -log dpll.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source dpll.tcl
+# Log file           : C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/project/adpll.runs/synth_1/dpll.vds
+# Journal file       : C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/project/adpll.runs/synth_1\vivado.jou
+# Running On         : LAPTOP-V5P4DNLK
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i7-13650HX
+# CPU Frequency      : 2803 MHz
+# CPU Physical cores : 14
+# CPU Logical cores  : 20
+# Host memory        : 25480 MB
+# Swap memory        : 3221 MB
+# Total Virtual      : 28701 MB
+# Available Virtual  : 10780 MB
+#-----------------------------------------------------------
+source dpll.tcl -notrace
+create_project: Time (s): cpu = 00:00:18 ; elapsed = 00:00:27 . Memory (MB): peak = 525.660 ; gain = 217.484
+Command: read_checkpoint -auto_incremental -incremental C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/project/adpll.srcs/utils_1/imports/synth_1/dpll.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/project/adpll.srcs/utils_1/imports/synth_1/dpll.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top dpll -part xc7a35tfgg484-2
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tfgg484-2
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 15884
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1261.957 ; gain = 542.016
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'dpll' [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.v:3]
+INFO: [Synth 8-6157] synthesizing module 'phasecomparator' [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/phasecomparator.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'phasecomparator' (0#1) [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/phasecomparator.v:5]
+INFO: [Synth 8-6157] synthesizing module 'variableresetrandomwalkfilter' [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/variableresetrandomwalkfilter.v:5]
+INFO: [Synth 8-6157] synthesizing module 'randomwalkfilter' [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/randomwalkfilter.v:4]
+	Parameter FilterResetValue bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'randomwalkfilter' (0#1) [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/randomwalkfilter.v:4]
+WARNING: [Synth 8-567] referenced signal 'ResetterCounter' should be on the sensitivity list [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/variableresetrandomwalkfilter.v:61]
+INFO: [Synth 8-6155] done synthesizing module 'variableresetrandomwalkfilter' (0#1) [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/variableresetrandomwalkfilter.v:5]
+WARNING: [Synth 8-7071] port 'N_FilterCounter' of module 'variableresetrandomwalkfilter' is unconnected for instance 'inst_zrwf' [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.v:42]
+WARNING: [Synth 8-7071] port 'ResetterValue' of module 'variableresetrandomwalkfilter' is unconnected for instance 'inst_zrwf' [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.v:42]
+WARNING: [Synth 8-7071] port 'ResetterCounter' of module 'variableresetrandomwalkfilter' is unconnected for instance 'inst_zrwf' [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.v:42]
+WARNING: [Synth 8-7023] instance 'inst_zrwf' of module 'variableresetrandomwalkfilter' has 8 connections declared, but only 5 given [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.v:42]
+INFO: [Synth 8-6157] synthesizing module 'freqdivider' [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/freqdivider.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'freqdivider' (0#1) [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/freqdivider.v:5]
+WARNING: [Synth 8-689] width (32) of port connection 'DividerMax' does not match port width (16) of module 'freqdivider' [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.v:47]
+WARNING: [Synth 8-689] width (16) of port connection 'DividerMaxValue' does not match port width (8) of module 'freqdivider' [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.v:48]
+WARNING: [Synth 8-7071] port 'DividerCounter' of module 'freqdivider' is unconnected for instance 'inst_freqdiv' [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.v:47]
+WARNING: [Synth 8-7023] instance 'inst_freqdiv' of module 'freqdivider' has 7 connections declared, but only 6 given [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.v:47]
+INFO: [Synth 8-6155] done synthesizing module 'dpll' (0#1) [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.v:3]
+WARNING: [Synth 8-7137] Register PeriodCount_reg in module phasecomparator has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/phasecomparator.v:70]
+WARNING: [Synth 8-7129] Port DividerMax[15] in module freqdivider is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DividerMax[14] in module freqdivider is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DividerMax[13] in module freqdivider is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DividerMax[12] in module freqdivider is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DividerMax[11] in module freqdivider is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DividerMax[10] in module freqdivider is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DividerMax[9] in module freqdivider is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DividerMax[8] in module freqdivider is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1380.555 ; gain = 660.613
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1380.555 ; gain = 660.613
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1380.555 ; gain = 660.613
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1380.555 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.xdc]
+Finished Parsing XDC File [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/source/dpll.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/dpll_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/dpll_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1459.484 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1459.484 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:43 ; elapsed = 00:00:47 . Memory (MB): peak = 1459.484 ; gain = 739.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tfgg484-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:43 ; elapsed = 00:00:47 . Memory (MB): peak = 1459.484 ; gain = 739.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:43 ; elapsed = 00:00:47 . Memory (MB): peak = 1459.484 ; gain = 739.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 1459.484 ; gain = 739.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 3     
+	   2 Input   15 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 2     
+	   2 Input    4 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
+	               15 Bit    Registers := 1     
+	                8 Bit    Registers := 3     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 11    
++---Muxes : 
+	   6 Input   15 Bit        Muxes := 1     
+	   8 Input    8 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 10    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:51 ; elapsed = 00:00:55 . Memory (MB): peak = 1459.484 ; gain = 739.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:07 ; elapsed = 00:01:12 . Memory (MB): peak = 1572.773 ; gain = 852.832
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:07 ; elapsed = 00:01:12 . Memory (MB): peak = 1573.258 ; gain = 853.316
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:07 ; elapsed = 00:01:13 . Memory (MB): peak = 1601.898 ; gain = 881.957
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:20 ; elapsed = 00:01:26 . Memory (MB): peak = 1832.012 ; gain = 1112.070
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:20 ; elapsed = 00:01:26 . Memory (MB): peak = 1832.012 ; gain = 1112.070
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:20 ; elapsed = 00:01:26 . Memory (MB): peak = 1832.012 ; gain = 1112.070
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:20 ; elapsed = 00:01:26 . Memory (MB): peak = 1832.012 ; gain = 1112.070
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:20 ; elapsed = 00:01:26 . Memory (MB): peak = 1832.012 ; gain = 1112.070
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:20 ; elapsed = 00:01:26 . Memory (MB): peak = 1832.012 ; gain = 1112.070
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    24|
+|3     |LUT1   |     7|
+|4     |LUT2   |    27|
+|5     |LUT3   |    38|
+|6     |LUT4   |    16|
+|7     |LUT5   |    28|
+|8     |LUT6   |    29|
+|9     |FDCE   |     8|
+|10    |FDPE   |     1|
+|11    |FDRE   |    65|
+|12    |IBUF   |     3|
+|13    |OBUF   |     1|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:20 ; elapsed = 00:01:26 . Memory (MB): peak = 1832.012 ; gain = 1112.070
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:57 ; elapsed = 00:01:21 . Memory (MB): peak = 1832.012 ; gain = 1033.141
+Synthesis Optimization Complete : Time (s): cpu = 00:01:21 ; elapsed = 00:01:27 . Memory (MB): peak = 1832.012 ; gain = 1112.070
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1836.883 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 24 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1840.469 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 3079843f
+INFO: [Common 17-83] Releasing license: Synthesis
+31 Infos, 18 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:33 ; elapsed = 00:01:47 . Memory (MB): peak = 1840.469 ; gain = 1307.566
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1840.469 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/qipif/Desktop/StmProject/DeepPLL/deeppll4/project/adpll.runs/synth_1/dpll.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file dpll_utilization_synth.rpt -pb dpll_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu May 21 16:46:38 2026...
